@@ -30,6 +30,13 @@ class MainActivity : AppCompatActivity() {
                 binding.ResultTextView.text = result.toString()
             }
         }
-
+        binding.minusButton.setOnClickListener {
+            val num1 = binding.editText1.text.toString().toDoubleOrNull()
+            val num2 = binding.editText2.text.toString().toDoubleOrNull()
+            if (num1 != null && num2 != null) {
+                val result = num1 - num2
+                binding.ResultTextView.text = result.toString()
+            }
+        }
         }
     }
