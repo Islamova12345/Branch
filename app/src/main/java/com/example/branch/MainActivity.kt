@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 alertDialogBuilder.setTitle("Game over")
                 alertDialogBuilder.setMessage("Start again?")
                 alertDialogBuilder.setPositiveButton("YES") { _, _ ->
-                    //restartGame()
+                    restartGame()
                 }
                 alertDialogBuilder.setNegativeButton("NO", null)
                 alertDialogBuilder.show()
@@ -80,7 +80,25 @@ class MainActivity : AppCompatActivity() {
 
     fun click(view: View) {
         if (!isGameFinished && view.visibility == View.VISIBLE && binding.sifir.text != "Finished!") {
-           // increaseScore()
+            increaseScore()
         }
+    }
 
+    private fun increaseScore() {
+        score++
+        binding.ikincisifir.text = score.toString()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun restartGame() {
+        // Reset variables
+        remainingTime = 10
+        score = 0
+        isGameFinished = false
+        binding.sifir.visibility = View.VISIBLE
+        binding.left.visibility = View.VISIBLE
+        timer.cancel()
+        // Start the game again
+        startGame()
+    }
 }
