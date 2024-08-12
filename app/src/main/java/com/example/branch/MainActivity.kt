@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         // Add click listener to replay button
         binding.replay.setOnClickListener {
-            //restartGame()
+            restartGame()
         }
     }
 
@@ -64,4 +64,23 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+            override fun onFinish() {
+                val alertDialogBuilder = AlertDialog.Builder(this@MainActivity)
+                alertDialogBuilder.setTitle("Game over")
+                alertDialogBuilder.setMessage("Start again?")
+                alertDialogBuilder.setPositiveButton("YES") { _, _ ->
+                    //restartGame()
+                }
+                alertDialogBuilder.setNegativeButton("NO", null)
+                alertDialogBuilder.show()
+            }
+        }
+        timer.start()
+    }
 
+    fun click(view: View) {
+        if (!isGameFinished && view.visibility == View.VISIBLE && binding.sifir.text != "Finished!") {
+           // increaseScore()
+        }
+
+}
