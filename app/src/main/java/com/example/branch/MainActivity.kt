@@ -12,5 +12,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        binding.addButton.setOnClickListener {
+            val num1 = binding.editText1.text.toString().toDoubleOrNull()
+            val num2 = binding.editText2.text.toString().toDoubleOrNull()
+            if (num1 != null && num2 != null) {
+                val result = num1 + num2
+                binding.ResultTextView.text = result.toString()
+            }
+        }
         }
     }
